@@ -33,6 +33,7 @@ public class Catalogo {
             System.out.println("Produto " + p.getNome() + " adicionado ao catálogo.");
         }
     }
+
     public void removerProduto(Produto p) {
         boolean removido = this.listaDeProdutos.remove(p);
         if (removido) {
@@ -41,10 +42,11 @@ public class Catalogo {
             System.out.println("Produto " + p.getNome() + " não encontrado no catálogo.");
         }
     }
+}
 
-    public Produto buscarProdutoPorCodigo(String codigoDeBarras) {
+    /* public Produto buscarProdutoPorCodigo(String codigoDeBarras) {
         for (Produto p : this.listaDeProdutos) {
-            if (p.getCodigoDeBarras().equals(codigoDeBarras)) {
+            if (p.id().equals(codigoDeBarras)) {
                 return p;
             }
         }
@@ -53,4 +55,6 @@ public class Catalogo {
     public List<Produto> listarTodosProdutos() {
         return new ArrayList<>(this.listaDeProdutos);
     }
+
 }
+     */

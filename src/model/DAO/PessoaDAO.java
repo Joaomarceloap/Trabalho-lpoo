@@ -6,15 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PessoaDAO {
     private Connection conexao;
 
     public PessoaDAO(Connection conexao) {
         if(conexao == null){
-            System.out.println("A conexao nao pode ser null");
+            System.out.println("A conexao nao pode ser feita");
         }
         this.conexao = conexao;
     }
