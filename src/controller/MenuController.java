@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.Connection;
 import model.DAO.ClienteDAO;
 import model.DAO.ProdutoDAO;
 import view.MainFrame;
@@ -7,8 +8,6 @@ import view.Menu;
 import view.TelaClientes;
 import view.TelaProdutos;
 import view.TelaSimular;
-
-import java.sql.Connection;
 
 public class MenuController {
 
