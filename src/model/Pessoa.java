@@ -1,7 +1,6 @@
 package model;
-import java.util.Objects;
 
-public class Pessoa implements Comparable<Pessoa>{
+public class Pessoa {
     private String nome;
     private String cpf;
     private String endereco;
@@ -14,68 +13,30 @@ public class Pessoa implements Comparable<Pessoa>{
         this.telefone = telefone;
     }
 
-    public String getNome() {
-        return nome;
-    }
+    // Getters e Setters
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public String getCpf() {
-        return cpf;
-    }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
+    // Métodos utilitários
     public void atualizarEndereco(String novoEndereco){
         this.endereco = novoEndereco;
-        System.out.println("Endereço de " + nome + " atualizado.");
     }
 
     public void atualizarTelefone(String novoTelefone){
         this.telefone = novoTelefone;
-        System.out.println("Telefone de " + nome + " atualizado.");
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Pessoa pessoa = (Pessoa) obj;
-        return Objects.equals(cpf, pessoa.cpf);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cpf); // Baseado apenas no CPF
-    }
-
-    @Override
-    public int compareTo(Pessoa outraPessoa) {
-        return this.nome.compareTo(outraPessoa.nome);
     }
 
     @Override
     public String toString() {
-        return "Pessoa [nome=" + nome + ", cpf=" + cpf + "]";
+        return "Pessoa[nome=" + nome + ", cpf=" + cpf + "]";
     }
 }

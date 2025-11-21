@@ -1,16 +1,20 @@
 package controller;
 
+import model.DAO.ClienteDAO;
 import view.CadastroCliente;
 import view.MainFrame;
 import view.TelaClientes;
 
 public class TelaClientesController {
+
     private TelaClientes view;
     private MainFrame frame;
+    private ClienteDAO clienteDAO;
 
-    public TelaClientesController(TelaClientes view, MainFrame frame) {
+    public TelaClientesController(TelaClientes view, MainFrame frame, ClienteDAO clienteDAO) {
         this.view = view;
         this.frame = frame;
+        this.clienteDAO = clienteDAO;
 
         configurarEventos();
     }
@@ -19,15 +23,11 @@ public class TelaClientesController {
 
         view.getBtnAdicionaCliente().addActionListener(e -> {
             CadastroCliente dialog = new CadastroCliente(frame);
+
+            // Agora sim: cria o controller do dialog
+            new CadastroClienteController(dialog, clienteDAO);
+
             dialog.setVisible(true);
-        });
-
-        view.getBtnExibirInformacoes().addActionListener(e -> {
-
-        });
-
-        view.getBtnExcluirClientes().addActionListener(e -> {
-
         });
 
         view.getBtnVoltar().addActionListener(e -> {

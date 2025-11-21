@@ -1,18 +1,23 @@
 package model;
+
 public class Cliente extends Pessoa {
-    private int numeroFidelidade;
+
+    private int numeroFidelidade;   // ID da tabela cliente (FK do CPF em pessoa)
     private int pontosFidelidade;
 
-    public Cliente(String nome, String cpf, String endereco, String telefone, int numeroFidelidade,int pontosFidelidade) {
+    public Cliente(String nome, String cpf, String endereco, String telefone,
+                   int numeroFidelidade, int pontosFidelidade) {
+
         super(nome, cpf, endereco, telefone);
-        this.numeroFidelidade = numeroFidelidade; //vai ser o id da tabela q une pessoa e cliente
+        this.numeroFidelidade = numeroFidelidade;
         this.pontosFidelidade = pontosFidelidade;
     }
 
-    public int getNumeroFidelidade() {return numeroFidelidade;}
-    public void setNumeroFidelidade(int numeroFidelidade) {this.numeroFidelidade = numeroFidelidade;}
-    public int getPontosFidelidade() {return pontosFidelidade;}
-    public void setPontosFidelidade(int pontosFidelidade) {this.pontosFidelidade = pontosFidelidade;}
+    public int getNumeroFidelidade() { return numeroFidelidade; }
+    public void setNumeroFidelidade(int numeroFidelidade) { this.numeroFidelidade = numeroFidelidade; }
+
+    public int getPontosFidelidade() { return pontosFidelidade; }
+    public void setPontosFidelidade(int pontosFidelidade) { this.pontosFidelidade = pontosFidelidade; }
 
     public void adicionarPontos(int pontos) {
         if (pontos > 0) {
@@ -20,6 +25,7 @@ public class Cliente extends Pessoa {
             System.out.println(pontos + " pontos adicionados. Saldo atual: " + this.pontosFidelidade);
         }
     }
+
     public void resgatarPontos(int pontos) {
         if (pontos <= 0) {
             System.out.println("Valor de resgate inválido.");

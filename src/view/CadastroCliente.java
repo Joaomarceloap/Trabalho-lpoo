@@ -14,8 +14,7 @@ public class CadastroCliente extends JDialog {
     private JButton btnCancelar;
 
     public CadastroCliente(JFrame parent) {
-
-        super(parent, "Novo Cliente", true);    //true = modal (trava tela atrás)
+        super(parent, "Novo Cliente", true);
 
         campoNome = new JTextField(20);
         campoCpf = new JTextField(20);
@@ -25,25 +24,29 @@ public class CadastroCliente extends JDialog {
         btnSalvar = new JButton("Salvar");
         btnCancelar = new JButton("Cancelar");
 
-        JPanel form = new JPanel(new GridLayout(3, 2, 10, 10));
+        JPanel form = new JPanel(new GridLayout(6, 2, 10, 10)); // CORRIGIDO
 
         form.add(new JLabel("Nome:"));
         form.add(campoNome);
+
         form.add(new JLabel("CPF:"));
         form.add(campoCpf);
+
         form.add(new JLabel("Endereço:"));
         form.add(campoEndereco);
+
         form.add(new JLabel("Telefone:"));
         form.add(campoTelefone);
-        form.add(new JLabel(""));
+
+        form.add(new JLabel("")); // espaçamento
+        form.add(new JLabel("")); // espaçamento
 
         form.add(btnCancelar);
         form.add(btnSalvar);
 
         add(form);
-
         pack();
-        setLocationRelativeTo(parent); //Centraliza na tela
+        setLocationRelativeTo(parent);
     }
 
     public JButton getBtnSalvar() { return btnSalvar; }

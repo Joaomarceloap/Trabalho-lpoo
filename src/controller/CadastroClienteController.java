@@ -1,46 +1,46 @@
 package controller;
 
 import javax.swing.JOptionPane;
-import view.CadastroCliente;
 import model.Cliente;
 import model.DAO.ClienteDAO;
+import view.CadastroCliente;
 
 public class CadastroClienteController {
 
     private CadastroCliente view;
     private ClienteDAO clienteDAO;
 
-    public CadastroClienteController(CadastroCliente view) {
+    public CadastroClienteController(CadastroCliente view, ClienteDAO clienteDAO) {
         this.view = view;
-        this.clienteDAO = new ClienteDAO();
+        this.clienteDAO = clienteDAO;
 
         configurarEventos();
     }
 
     private void configurarEventos() {
 
-        //Salvar no BD
         view.getBtnSalvar().addActionListener(e -> {
 
-            String nome = view.getNome();
-            String cpf = view.getCpf();
-            String endereco = view.getEndereco();
-            String telefone = view.getTelefone();
+            String nome = view.getNome().trim();
+            String cpf = view.getCpf().trim();
+            String endereco = view.getEndereco().trim();
+            String telefone = view.getTelefone().trim();
 
-            //Cria objeto Cliente
-            Cliente novo = new Cliente(nome, cpf, endereco, telefone);
+            // Validação básica
+            if (nome.isEmpty() || cpf.isEmpty() || endereco.isEmpty() || telefone.isEmpty()) {
+                JOptionPane.showMessageDialog(view, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-            //Salva no banco via DAO
+            // Cliente inicia com pontos = 0; ID será resolvido pelo banco
+            Cliente novo = new Cliente(nome, cpf, endereco, telefone, 0, 0);
+
             clienteDAO.create(novo);
 
             JOptionPane.showMessageDialog(view, "Cliente cadastrado!");
-
             view.dispose();
         });
 
-        //Cancelar
-        view.getBtnCancelar().addActionListener(e -> {
-            view.dispose();
-        });
+        view.getBtnCancelar().addActionListener(e -> view.dispose());
     }
 }
