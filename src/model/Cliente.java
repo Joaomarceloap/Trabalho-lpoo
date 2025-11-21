@@ -3,29 +3,16 @@ public class Cliente extends Pessoa {
     private int numeroFidelidade;
     private int pontosFidelidade;
 
-
     public Cliente(String nome, String cpf, String endereco, String telefone, int numeroFidelidade,int pontosFidelidade) {
         super(nome, cpf, endereco, telefone);
-        this.numeroFidelidade = numeroFidelidade;
+        this.numeroFidelidade = numeroFidelidade; //vai ser o id da tabela q une pessoa e cliente
         this.pontosFidelidade = pontosFidelidade;
     }
 
-    public int getNumeroFidelidade() {
-        return numeroFidelidade;
-    }
-
-    public void setNumeroFidelidade(int numeroFidelidade) {
-        this.numeroFidelidade = numeroFidelidade;
-    }
-
-    public int getPontosFidelidade() {
-        return pontosFidelidade;
-    }
-
-    public void setPontosFidelidade(int pontosFidelidade) {
-        this.pontosFidelidade = pontosFidelidade;
-    }
-
+    public int getNumeroFidelidade() {return numeroFidelidade;}
+    public void setNumeroFidelidade(int numeroFidelidade) {this.numeroFidelidade = numeroFidelidade;}
+    public int getPontosFidelidade() {return pontosFidelidade;}
+    public void setPontosFidelidade(int pontosFidelidade) {this.pontosFidelidade = pontosFidelidade;}
 
     public void adicionarPontos(int pontos) {
         if (pontos > 0) {
@@ -42,10 +29,5 @@ public class Cliente extends Pessoa {
         } else {
             System.out.println("Saldo de pontos insuficiente para resgate.");
         }
-    }
-
-    public void realizarCompra() {
-        System.out.println("Cliente " + getNome() + " está realizando uma compra...");
-        // Ex: this.adicionarPontos(10); // da pra adicionar pontos pela compra, tem q ver isso ae
     }
 }

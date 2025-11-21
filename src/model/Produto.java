@@ -4,25 +4,19 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Produto implements Comparable<Produto>{
-    private String codigoDeBarras;
+    private int id;
     private String nome;
     private double preco;
     private int qtdEstoque;
-    private LocalDate dataValidade;
 
-    public Produto(String codigoDeBarras, String nome, double preco, int qtdEstoque, LocalDate dataValidade) {
-        this.codigoDeBarras = codigoDeBarras;
+    public Produto(int id, String nome, double preco, int qtdEstoque) {
+        this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.qtdEstoque = qtdEstoque;
-        this.dataValidade = dataValidade;
     }
-    public String getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-    public void setCodigoDeBarras(String codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
-    }
+    public int getId() {return id;}
+    public int setId(int id){this.id = id;return id;}
     public String getNome() {
         return nome;
     }
@@ -40,13 +34,6 @@ public class Produto implements Comparable<Produto>{
     }
     public void setQtdEstoque(int qtdEstoque) {
         this.qtdEstoque = qtdEstoque;
-    }
-
-    public LocalDate getDataValidade() {
-        return dataValidade;
-    }
-    public void setDataValidade(LocalDate dataValidade) {
-        this.dataValidade = dataValidade;
     }
 
     public void adicionarEstoque(int quantidade) {
@@ -74,12 +61,12 @@ public class Produto implements Comparable<Produto>{
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Produto produto = (Produto) obj;
-        return Objects.equals(codigoDeBarras, produto.codigoDeBarras);
+        return Objects.equals(id, produto.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigoDeBarras);
+        return Objects.hash(id);
     }
 
     @Override
@@ -89,7 +76,7 @@ public class Produto implements Comparable<Produto>{
 
     @Override
     public String toString() {
-        return "Produto [nome=" + nome + ", preco=" + preco + ", estoque=" + qtdEstoque + ", validade=" + dataValidade + "]";
+        return "Produto [nome=" + nome + ", preco=" + preco + ", estoque=" + qtdEstoque + "]";
     }
 
 }
