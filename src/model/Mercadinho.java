@@ -22,7 +22,8 @@ public class Mercadinho {
         return "Numero de vendas: " + getVendas() + " Receita total: " + getReceitaTotal();
     }
 
-    public void regVenda(){
-
+    public void regVenda(int qtd, double valor){
+        this.vendas += qtd;
+        this.receitaTotal += valor;
     }
 }

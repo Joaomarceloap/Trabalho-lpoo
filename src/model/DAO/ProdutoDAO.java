@@ -59,8 +59,8 @@ public class ProdutoDAO {
         return produto;
     }
 
-    public void vendaProduto(int id, int qnt) { //para usar eh so ter um produtoDAO com o id e inserir -> produtoDAO.vendaProduto(1, 10);
-        String sql = "update produto set quantidade = quantidade - ? where id = ?";
+    public void vendaProduto(int id, int qnt) { //para usar e so ter um produtoDAO com o id e inserir -> produtoDAO.vendaProduto(1, 10);
+        String sql = "UPDATE produto SET quantidade = quantidade - ? WHERE id = ?";
 
         try(PreparedStatement stmt = this.conexao.prepareStatement(sql)){
             stmt.setInt(1, qnt);
@@ -75,7 +75,7 @@ public class ProdutoDAO {
     }
 
     public void addEstoque (int id, int qnt){
-        String sql = "update produto set quantidade = quantidade + ? where id = ?";
+        String sql = "UPDATE produto SET quantidade = quantidade + ? WHERE id = ?";
 
         try(PreparedStatement stmt = this.conexao.prepareStatement(sql)){
             stmt.setInt(1,qnt);
