@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProdutoDAO {
     private Connection conexao;
@@ -57,7 +59,7 @@ public class ProdutoDAO {
         return produto;
     }
 
-    public void vendaProduto(int id, int qnt) {
+    public void vendaProduto(int id, int qnt) { //para usar eh so ter um produtoDAO com o id e inserir -> produtoDAO.vendaProduto(1, 10);
         String sql = "update produto set quantidade = quantidade - ? where id = ?";
 
         try(PreparedStatement stmt = this.conexao.prepareStatement(sql)){
@@ -101,5 +103,27 @@ public class ProdutoDAO {
         } catch(SQLException e){
             System.out.println("Erro ao deletar produto: " + e.getMessage());
         }
+    }
+
+    public List<Produto> getAll(){
+        String sql = "SELECT * FROM produto";
+         List<Produto> produtos = new ArrayList<>();
+
+         try(PreparedStatement stmt = this.conexao.prepareStatement(sql)){
+             ResultSet rs = stmt.executeQuery();
+             while (rs.next()){
+                 Produto p = new Produto(
+                 rs.getInt("id"),
+                 rs.getString("nome"),
+                 rs.getDouble("preco"),
+                 rs.getInt("qtdEstoque")
+                );
+                 produtos.add(p);
+             }
+         } catch (SQLException e) {
+             System.out.println(e.getMessage());
+         }
+
+         return produtos;
     }
 }
