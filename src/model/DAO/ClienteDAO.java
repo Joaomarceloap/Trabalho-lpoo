@@ -20,7 +20,7 @@ public class ClienteDAO {
 
     public void create(Cliente c) {
         String sqlPessoa = "INSERT INTO pessoa (cpf, nome, endereco, telefone) VALUES (?, ?, ?, ?)";
-        String sqlCliente = "INSERT INTO cliente (id_cliente, cpf, pontos) VALUES (?, ?, ?)";
+        String sqlCliente = "INSERT INTO cliente (cpf, pontos) VALUES (?, ?)";
 
         try {
             // INSERE NA TABELA PESSOA
@@ -33,9 +33,8 @@ public class ClienteDAO {
 
             // INSERE NA TABELA CLIENTE
             PreparedStatement stmtCliente = conexao.prepareStatement(sqlCliente);
-            stmtCliente.setInt(1, c.getNumeroFidelidade());
-            stmtCliente.setString(2, c.getCpf());
-            stmtCliente.setInt(3, c.getPontosFidelidade());
+            stmtCliente.setString(1, c.getCpf());
+            stmtCliente.setInt(2, c.getPontosFidelidade());
             stmtCliente.executeUpdate();
 
             System.out.println("Cliente cadastrado com sucesso!");
