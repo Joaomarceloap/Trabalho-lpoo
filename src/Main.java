@@ -23,8 +23,8 @@ public class Main {
                 ProdutoDAO produtoDAO = new ProdutoDAO(conexao);
 
                 // Criar tela principal
-                MainFrame frame = new MainFrame();
                 Menu menu = new Menu();
+                MainFrame frame = new MainFrame(menu);
 
                 // Controller principal (agora recebe conexão)
                 new MenuController(menu, frame, conexao);

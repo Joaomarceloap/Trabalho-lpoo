@@ -116,7 +116,7 @@ public class ProdutoDAO {
                  rs.getInt("id"),
                  rs.getString("nome"),
                  rs.getDouble("preco"),
-                 rs.getInt("qtdEstoque")
+                 rs.getInt("quantidade")
                 );
                  produtos.add(p);
              }

@@ -47,10 +47,10 @@ public class ClienteDAO {
     public Cliente get(int id) {
         String sql = """
             SELECT p.nome, p.cpf, p.endereco, p.telefone,
-                   c.id_cliente, c.pontos
+                   c.id, c.pontos
             FROM cliente c
             JOIN pessoa p ON c.cpf = p.cpf
-            WHERE c.id_cliente = ?
+            WHERE c.id = ?
         """;
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -64,7 +64,7 @@ public class ClienteDAO {
                     rs.getString("cpf"),
                     rs.getString("endereco"),
                     rs.getString("telefone"),
-                    rs.getInt("id_cliente"),
+                    rs.getInt("id"),
                     rs.getInt("pontos")
                 );
             }
@@ -77,7 +77,7 @@ public class ClienteDAO {
     }
 
     public void updatePontos(int qtd, int id) {
-        String sql = "UPDATE cliente SET pontos = pontos + ? WHERE id_cliente = ?";
+        String sql = "UPDATE cliente SET pontos = pontos + ? WHERE id = ?";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setInt(1, qtd);
@@ -91,7 +91,7 @@ public class ClienteDAO {
     }
 
     public void resgatarPontos(int id, int pontos) {
-        String sql = "UPDATE cliente SET pontos = pontos - ? WHERE id_cliente = ?";
+        String sql = "UPDATE cliente SET pontos = pontos - ? WHERE id = ?";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setInt(1, pontos);
@@ -107,7 +107,7 @@ public class ClienteDAO {
     public List<Cliente> getAll() {
         String sql = """
             SELECT p.nome, p.cpf, p.endereco, p.telefone,
-                   c.id_cliente, c.pontos
+                   c.id, c.pontos
             FROM cliente c
             JOIN pessoa p ON c.cpf = p.cpf
         """;
@@ -123,7 +123,7 @@ public class ClienteDAO {
                     rs.getString("cpf"),
                     rs.getString("endereco"),
                     rs.getString("telefone"),
-                    rs.getInt("id_cliente"),
+                    rs.getInt("id"),
                     rs.getInt("pontos")
                 );
                 lista.add(c);

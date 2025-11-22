@@ -54,6 +54,6 @@ public class MercadinhoDAO {
     }
 
     public void regVenda(int id, int id_produto){
-        String sql = "UPDATE INTO mercadinho SET vendas = vendas+? receita = receita_total +? WHERE id = ?"; // TODO: terminar logica de venda;
+        String sql = "UPDATE INTO mercadinho SET vendas = vendas+? receita = receita_total +? WHERE id = ?";
     }
 }
