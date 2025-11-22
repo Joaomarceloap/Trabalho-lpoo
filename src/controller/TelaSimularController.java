@@ -87,10 +87,13 @@ public class TelaSimularController {
                 double total = qtd * produtoSelecionado.getPreco();
 
                 view.exibirMensagem(
-                        "Cliente: " + clienteSelecionado.getNome() +
-                        "\nProduto: " + produtoSelecionado.getNome() +
-                        "\nQuantidade: " + qtd +
-                        "\nTotal: R$ " + total
+                        String.format(
+                                "Cliente: %s\nProduto: %s\nQuantidade: %d\nTotal: R$ %.2f",
+                                clienteSelecionado.getNome(),
+                                produtoSelecionado.getNome(),
+                                qtd,
+                                total
+                        )
                 );
 
             } catch (Exception ex) {

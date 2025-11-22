@@ -50,33 +50,6 @@ public class TelaProdutosController {
                 view.exibirMensagem("Erro ao inserir produto: " + ex.getMessage());
             }
         });
-
-        // RETIRAR PRODUTO
-        view.getBtnRetirarProduto().addActionListener(e -> {
-            try {
-                int id = Integer.parseInt(view.getCampoId().getText());
-                int qtd = Integer.parseInt(view.getCampoQtd().getText());
-
-                Produto p = produtoDAO.getProduto(id);
-
-                if (p == null) {
-                    view.exibirMensagem("Produto não encontrado.");
-                    return;
-                }
-
-                if (!p.estaDisponivel(qtd)) {
-                    view.exibirMensagem("Estoque insuficiente!");
-                    return;
-                }
-
-                produtoDAO.vendaProduto(id, qtd);
-                view.exibirMensagem("Estoque atualizado com sucesso!");
-
-            } catch (Exception ex) {
-                view.exibirMensagem("Erro: " + ex.getMessage());
-            }
-        });
-
         // ORDENAR POR NOME
         view.getBtnOrdenarNome().addActionListener(e -> {
 
@@ -128,14 +101,12 @@ public class TelaProdutosController {
         StringBuilder sb = new StringBuilder();
 
         for (Produto p : produtos) {
-            sb.append(p.getId())
-                    .append(" - ")
-                    .append(p.getNome())
-                    .append(" | R$ ")
-                    .append(p.getPreco())
-                    .append(" | Estoque: ")
-                    .append(p.getQtdEstoque())
-                    .append("\n");
+            sb.append(String.format("%d - %s - R$ %.2f - Estoque: %d\n",
+                    p.getId(),
+                    p.getNome(),
+                    p.getPreco(),
+                    p.getQtdEstoque()));
+
         }
 
         view.exibirMensagem(sb.toString());

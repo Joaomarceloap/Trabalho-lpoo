@@ -16,7 +16,6 @@ public class TelaProdutos extends JPanel {
 
     // Botões principais
     private JButton btnInserirProduto;
-    private JButton btnRetirarProduto;
     private JButton btnVoltar;
 
     // Botões de ordenação
@@ -38,7 +37,6 @@ public class TelaProdutos extends JPanel {
 
         // Criar botões principais
         btnInserirProduto = new JButton("Adicionar Produto");
-        btnRetirarProduto = new JButton("Retirar Produto");
         btnVoltar = new JButton("Voltar");
 
         // Criar botões de ordenação
@@ -66,7 +64,6 @@ public class TelaProdutos extends JPanel {
         // Painel de botões principais
         JPanel painelBtn = new JPanel(new GridLayout(1, 3, 10, 10));
         painelBtn.add(btnInserirProduto);
-        painelBtn.add(btnRetirarProduto);
         painelBtn.add(btnVoltar);
 
         // Painel de ordenação
@@ -88,7 +85,6 @@ public class TelaProdutos extends JPanel {
 
     // GETTERS
     public JButton getBtnInserirProduto() { return btnInserirProduto; }
-    public JButton getBtnRetirarProduto() { return btnRetirarProduto; }
     public JButton getBtnVoltar() { return btnVoltar; }
 
     public JButton getBtnOrdenarNome() { return btnOrdenarNome; }
